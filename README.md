@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OpenImage
+
+A clean, browser-based AI image generation app powered by [OpenRouter](https://openrouter.ai). Enter a prompt, pick a model, and generate images — all from your browser with no backend required.
+
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06b6d4?logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+## 🌐 [Try OpenImage](https://openimage.vercel.app)
+
+## Features
+
+- **Browser-native** — API calls go directly from your browser to OpenRouter. No server, no proxy, no backend.
+- **Two generation modes**
+  - **OpenRouter** — Uses the chat completions API with `modalities: ["image"]` for models like Seedream, Flux, and more.
+  - **OpenAI Compatible** — Uses the standard `images/generations` endpoint with size controls.
+- **Multiple models** — DALL-E 3, Flux 1.1 Pro, Flux Schnell, Stable Diffusion 3, Seedream 4.5, or enter any custom model ID.
+- **API key in cookies** — Your OpenRouter key is saved locally in a browser cookie. It never touches a server.
+- **Lightbox & download** — Click any image to expand. Download with one click.
+- **Prompt history** — All generated images stay in your session with full prompt recall.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Node.js](https://nodejs.org) 20.9 or later
+- An [OpenRouter API key](https://openrouter.ai/keys)
+
+### Install & Run
 
 ```bash
+git clone https://github.com/fathah/openimage.git
+cd openimage
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000), enter your OpenRouter API key, and start generating.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supported Models
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### OpenRouter (chat-based)
 
-## Learn More
+| Model              | ID                               |
+| ------------------ | -------------------------------- |
+| Seedream 4.5       | `bytedance-seed/seedream-4.5`    |
+| DALL-E 3           | `openai/dall-e-3`                |
+| Flux 1.1 Pro       | `black-forest-labs/flux-1.1-pro` |
+| Flux Schnell       | `black-forest-labs/flux-schnell` |
+| Stable Diffusion 3 | `stabilityai/stable-diffusion-3` |
 
-To learn more about Next.js, take a look at the following resources:
+### OpenAI Compatible (images endpoint)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Model        | ID                               |
+| ------------ | -------------------------------- |
+| DALL-E 3     | `openai/dall-e-3`                |
+| Flux 1.1 Pro | `black-forest-labs/flux-1.1-pro` |
+| Flux Schnell | `black-forest-labs/flux-schnell` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You can also enter any custom model ID supported by OpenRouter.
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **[Next.js 16](https://nextjs.org)** — React framework with Turbopack
+- **[React 19](https://react.dev)** — UI library
+- **[Tailwind CSS 4](https://tailwindcss.com)** — Utility-first styling
+- **[TypeScript 5](https://typescriptlang.org)** — Type safety
+- **[OpenRouter API](https://openrouter.ai/docs)** — Multi-model AI gateway
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+app/
+  page.tsx        # Main UI — prompt, generation, gallery, lightbox
+  layout.tsx      # Root layout with fonts and metadata
+  globals.css     # Theme, animations (shimmer, fade-in, pulse)
+```
+
+Everything runs in a single client component. No API routes, no server actions.
+
+## License
+
+MIT
