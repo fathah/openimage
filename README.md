@@ -7,7 +7,7 @@ A clean, browser-based AI image generation app powered by [OpenRouter](https://o
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06b6d4?logo=tailwindcss&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 🌐 [Try OpenImage](https://openimage.vercel.app)
+## 🌐 [Try OpenImage](https://openimage-gen.vercel.app)
 
 ## Features
 
